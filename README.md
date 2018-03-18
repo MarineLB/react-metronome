@@ -6,6 +6,8 @@ This metronome was created as an intro to React, thanks to this [tutorial](https
 
 `cd metronome`
 
+`npm install`
+
 `npm start`
 
 open `http://localhost:3000`
