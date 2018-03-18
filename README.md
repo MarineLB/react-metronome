@@ -2,5 +2,6 @@ This metronome was created as an intro to React, thanks to this [tutorial](https
 
 To start :
 `git clone`
+
 `cd metronome`
 `npm start`

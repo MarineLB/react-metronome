@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import './Metronome.css';
 import click1 from './click1.wav';
 import click2 from './click2.wav';
+import classNames from 'classnames'
+
 
 //Create the Metronome component
 class Metronome extends Component {
@@ -25,6 +27,7 @@ class Metronome extends Component {
     }
 
     handleBpmChange = event => {
+
         const bpm = event.target.value;
 
         if(this.state.playing){
@@ -49,7 +52,6 @@ class Metronome extends Component {
 
         // The frst beat will have a different sound
         count % beatsPerMeasure === 0 ? this.click2.play() : this.click1.play();
-
         //Keep track of which beat we're on
         this.setState(state => ({
             count: (state.count + 1) % state.beatsPerMeasure
@@ -76,16 +78,28 @@ class Metronome extends Component {
 
     render() {
         const { playing, bpm } = this.state;
+        const playButtonClasses = classNames({
+            'pause': playing
+        });
+        const buttonClasses = "bpmController";
 
         return (
             <div className="metronome">
                 <div className="bpm-slider">
-                    <div>{bpm} BPM</div>
-                    <input type="range" min="60" max="240" value={bpm} onChange={this.handleBpmChange}/>
+                    <div className="metronome-header">
+                        <div><span className="bpm-number">{bpm}</span> <span className="bpm-label">BPM</span></div>
+                        <div>
+                            <button onClick={this.startStop} className={playButtonClasses}></button>
+                        </div>
+                    </div>
+                    <div className="metronome-content">
+                        <button onClick={this.handleBpmChange} value={+bpm-1} className={buttonClasses}>-</button>
+                        <input type="range" min="60" max="240" value={bpm} onChange={this.handleBpmChange}/>
+                        <button onClick={this.handleBpmChange} value={+bpm+1} className={buttonClasses}>+</button>
+                    </div>
+
                 </div>
-                <button onClick={this.startStop} className={playing ? 'playing' : ''}>
-                    {playing ? 'Stop' : 'Start'}
-                </button>
+
             </div>
 
         );

@@ -7,28 +7,128 @@ body, html, #root{
     align-items: center;
 }
 .metronome {
-    text-align: center;
-    width: 50%;
+    width: 40%;
     min-width:300px;
 }
 
-.bpm-slider input {
-    width: 100%;
+.metronome-header{
+    display: flex;
+    justify-content:space-between;
+    align-items: flex-end;
 }
 
-.metronome button {
-    background: #65c96d;
-    padding: 10px;
-    border: 1px solid #2b8326;
-    border-radius: 2px;
-    width: 100px;
+.bpm-number{
+    font-size:2rem;
+}
+.bpm-label{
+    font-size:0.8rem;
+    opacity:0.9;
+}
+
+.bpm-slider input[type=range]{
+    -webkit-appearance: none;
+    width:100%;
+    margin-top:10px;
+}
+
+.bpm-slider input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #eee;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.bpm-slider input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #53b4ff;
+    margin-top: -8px;
+    cursor: pointer;
+}
+
+.bpm-slider input[type=range]:focus {
+    outline: none;
+}
+
+.bpm-slider input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #eaeaea;
+}
+
+.metronome-header button {
+    background: #53b4ff;
+    padding:0;
+    border-radius: 100%;
+    width: 37px;
+    height:37px;
     color: #fff;
     font-size: 18px;
     cursor: pointer;
     outline: none;
+    border:5px solid white;
+    box-sizing: content-box;
+}
+.metronome-header button.beating{
+    animation: tick .5s;
 }
 
-.metronome button.playing{
-    background: #C94D46;
-    border: 1px solid #832420;
+.metronome-header button:before{
+    background: transparent;
+    content: '';
+    display: inline-block;
+    height:0;
+    width:0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left:15px solid white;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+.metronome-header button.pause:before{
+    background: white;
+    height:45%;
+    width:4px;
+    border:none;
+    left:0;
+}
+.metronome-header button.pause:after{
+    content: '';
+    display: inline-block;
+    background: white;
+    height:45%;
+    width:4px;
+    margin-left:3px;
+    position: relative;
+    top:2px;
+}
+
+@keyframes tick {
+    0% { border-color: white}
+    25% { border-color: #c5f1ff}
+    50% { border-color: #b1e5ff}
+    75% { border-color: #c5f1ff}
+    100% { border-color: white}
+}
+
+.metronome-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.metronome-content button{
+    color: #53b4ff;
+    background: none;
+    -webkit-appearance: none;
+    font-weight:bold;
+    font-size:3rem;
+    border:none;
+    outline:none;
+    cursor: pointer;
 }
