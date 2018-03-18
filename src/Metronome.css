@@ -1,0 +1,34 @@
+body, html, #root{
+    height: 100%;
+}
+#root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.metronome {
+    text-align: center;
+    width: 50%;
+    min-width:300px;
+}
+
+.bpm-slider input {
+    width: 100%;
+}
+
+.metronome button {
+    background: #65c96d;
+    padding: 10px;
+    border: 1px solid #2b8326;
+    border-radius: 2px;
+    width: 100px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+}
+
+.metronome button.playing{
+    background: #C94D46;
+    border: 1px solid #832420;
+}
